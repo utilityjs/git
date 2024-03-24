@@ -15,7 +15,7 @@ export class GITUtility {
    * @return {Promise<string>} Returns git command output.
    * @example
    * ```ts
-   * gitUtility.runGITCommand("status");
+   * gitUtility.runCommand("status");
    * // => On branch master
    *
    * No commits yet
@@ -25,7 +25,7 @@ export class GITUtility {
    *         new file:   .editorconfig
    * ```
    */
-  async runGITCommand(...args: string[]): Promise<string> {
+  async runCommand(...args: string[]): Promise<string> {
     const command = new Deno.Command("git", {
       args: [...args],
       cwd: this.#cwd,
@@ -58,7 +58,7 @@ export class GITUtility {
    * ```
    */
   async hasUncommittedChanges(): Promise<boolean> {
-    const status = await this.runGITCommand("status", "--porcelain");
+    const status = await this.runCommand("status", "--porcelain");
     return status !== "";
   }
 }

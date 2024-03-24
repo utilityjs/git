@@ -22,15 +22,15 @@ describe("git", function () {
   beforeAll(async () => {
     await Deno.mkdir(TMP_RESOURCES_PATH, { recursive: true });
     tmpFolderGit = new GITUtility(TMP_RESOURCES_PATH);
-    await tmpFolderGit.runGITCommand("init");
+    await tmpFolderGit.runCommand("init");
   });
 
   afterAll(async () => {
     await Deno.remove(TEST_RESOURCES_PATH, { recursive: true });
   });
 
-  it("runGITCommand(): positive", async () => {
-    const output = await tmpFolderGit.runGITCommand("status");
+  it("runCommand(): positive", async () => {
+    const output = await tmpFolderGit.runCommand("status");
     assertStringIncludes(
       output,
       "No commits yet",
@@ -38,9 +38,9 @@ describe("git", function () {
     );
   });
 
-  it("runGitCommand(): negative", async () => {
+  it("runCommand(): negative", async () => {
     try {
-      await tmpFolderGit.runGITCommand("invalid_command");
+      await tmpFolderGit.runCommand("invalid_command");
       assert(true, "Command is expected to fail");
     } catch (e) {
       assert(e instanceof GitError, "Command is expected to fail");
