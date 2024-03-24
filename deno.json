@@ -1,6 +1,6 @@
 {
   "name": "@utility/git",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "tasks": {
     "test": "deno test --coverage --allow-run --allow-write --allow-read",
     "coverage": "deno coverage --include=src --lcov > coverage/lcov.info"
