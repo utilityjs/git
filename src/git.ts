@@ -3,7 +3,7 @@ import { GitError } from "./GitError.ts";
 export class GITUtility {
   readonly #cwd: string | URL;
 
-  constructor(cwd: string | URL) {
+  constructor(cwd?: string) {
     if (cwd) this.#cwd = cwd;
     else this.#cwd = Deno.cwd();
   }
