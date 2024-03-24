@@ -23,7 +23,7 @@ jobs:
       - name: build and test
         run: |
           deno --version --unstable
-          deno test --coverage
+          deno task test
           deno task coverage
         env:
           CI: true

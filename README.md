@@ -1,20 +1,17 @@
 # @utility/date
 
-A Date utility library
+A git utility library
 
 
 ```shell
-deno add @utility/date
+deno add @utility/git
 ```
 
 Example
 
 ```typescript
-import { isISODate } from "@utility/date";
+import { GITUtility } from "@utility/git";
 
-isISODate("2022-12-27T07:40:25.551Z");
+await new GITUtility("./git-repo-folder/").hasUncommittedChanges();
 // => true
-
-isISODate("25/12/2022");
-// => false
 ```
