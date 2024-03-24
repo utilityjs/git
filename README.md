@@ -1,6 +1,6 @@
 # @utility/date
 
-A git utility library
+A module providing git utility functions.
 
 
 ```shell
