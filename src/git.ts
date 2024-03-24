@@ -1,7 +1,7 @@
 import { GitError } from "./GitError.ts";
 
 export class GITUtility {
-  readonly #cwd: string | URL;
+  readonly #cwd: string;
 
   constructor(cwd?: string) {
     if (cwd) this.#cwd = cwd;
