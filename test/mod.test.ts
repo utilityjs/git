@@ -56,7 +56,7 @@ describe("git", function () {
     assertEquals(hasChanges, false, "Command is expected to fail");
   });
 
-  it("#checkoutRepository()", async () => {
+  it("#checkoutRepository(): positive", async () => {
     await new GITUtility(TMP_RESOURCES_PATH).clone(
       "https://github.com/utilityjs/git-test.git"
     );
