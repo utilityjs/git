@@ -47,7 +47,7 @@ export class GITUtility {
   }
 
   /**
-   * Runs git commands
+   * Checking is there are uncommitted changes on current working directory
    *
    * @param {string[]} args takes args for git command
    * @return { Promise<boolean>} Returns true if git repository as uncommited changes
@@ -60,5 +60,20 @@ export class GITUtility {
   async hasUncommittedChanges(): Promise<boolean> {
     const status = await this.runCommand("status", "--porcelain");
     return status !== "";
+  }
+
+  /**
+   * Clones repository into current working directory using the url provided.
+   *
+   * @param {string} repositoryUrl Repository url
+   * @return { Promise<void>}
+   * @example
+   * ```ts
+   * await gitUtility.clone("https://github.com/utilityjs/git-test.git");
+   * // => true
+   * ```
+   */
+  async clone(repositoryUrl: string): Promise<void> {
+    await this.runCommand("clone", repositoryUrl);
   }
 }
