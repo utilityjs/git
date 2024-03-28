@@ -2,22 +2,16 @@
   "name": "@utility/git",
   "version": "0.3.0-pre.1",
   "tasks": {
-    "test": "deno test --coverage --allow-run --allow-write --allow-read",
-    "coverage": "deno coverage --include=src --lcov > coverage/lcov.info"
+    "coverage": "deno task test --coverage=./dist/coverage && deno coverage --include=src --lcov ./dist/coverage > ./dist/coverage/lcov.info",
+    "test": "deno test --allow-write=./test/ --allow-read=./test/ --allow-run=git --allow-net=https://github.com"
   },
-  "test": {},
   "exports": "./mod.ts",
+  "exclude": [
+    "dist"
+  ],
   "publish": {
-    "include": [
-      "LICENSE",
-      "README.md",
-      "mod.ts",
-      "README.md",
-      "deno.json",
-      "deno.lock",
-      "src/**/*.ts"
-    ],
     "exclude": [
+      ".github/",
       "test/"
     ]
   },
