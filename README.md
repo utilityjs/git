@@ -1,4 +1,4 @@
-# @utility/date
+# @utility/git
 
 A module providing git utility functions.
 
