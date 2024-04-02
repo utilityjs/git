@@ -7,7 +7,8 @@
   },
   "exports": "./mod.ts",
   "exclude": [
-    "dist"
+    "dist",
+    ".run"
   ],
   "publish": {
     "exclude": [
