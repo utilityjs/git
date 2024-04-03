@@ -12,7 +12,7 @@ import {
 import { GitError, GITUtility } from "../mod.ts";
 
 const TMP_RESOURCES_PATH = path.normalize(
-  import.meta.dirname + "/resources/tmp"
+  import.meta.dirname + "/resources/tmp",
 );
 
 describe("git", function () {
@@ -24,7 +24,7 @@ describe("git", function () {
       recursive: true,
     });
     runCommandTestRepo = new GITUtility(
-      path.normalize(TMP_RESOURCES_PATH + "/run_command_test")
+      path.normalize(TMP_RESOURCES_PATH + "/run_command_test"),
     );
     await runCommandTestRepo.runCommand("init");
   });
@@ -38,7 +38,7 @@ describe("git", function () {
     assertStringIncludes(
       output,
       "No commits yet",
-      "Git repository is expected to not have any commits"
+      "Git repository is expected to not have any commits",
     );
   });
 
@@ -58,7 +58,7 @@ describe("git", function () {
 
   it("#checkoutRepository(): positive", async () => {
     await new GITUtility(TMP_RESOURCES_PATH).clone(
-      "https://github.com/utilityjs/git-test.git"
+      "https://github.com/utilityjs/git-test.git",
     );
     assertEquals(await _exists(TMP_RESOURCES_PATH + "/git-test"), true);
   });

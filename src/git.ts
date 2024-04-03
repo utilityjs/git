@@ -1,19 +1,19 @@
-import { GitError } from "./GitError.ts"
+import { GitError } from "./GitError.ts";
 
 /**
  * Utility class for executing Git commands within a Deno environment.
  */
 export class GITUtility {
   // Private field to store the current working directory
-  readonly #cwd: string
+  readonly #cwd: string;
 
   /**
    * Constructs a GITUtility instance, optionally setting the current working directory.
    * @param {string} [cwd] - The current working directory for Git operations. Defaults to Deno's current directory.
    */
   constructor(cwd?: string) {
-    if (cwd) this.#cwd = cwd
-    else this.#cwd = Deno.cwd()
+    if (cwd) this.#cwd = cwd;
+    else this.#cwd = Deno.cwd();
   }
 
   /**
@@ -32,19 +32,21 @@ export class GITUtility {
       cwd: this.#cwd,
       stdout: "piped",
       stderr: "piped",
-    })
+    });
 
-    const { code, stdout, stderr } = await command.output()
+    const { code, stdout, stderr } = await command.output();
 
     if (code !== 0) {
       throw new GitError(
-        `Failed to run \`git ${args.join(" ")}\`: ${new TextDecoder().decode(
-          stderr
-        )}`
-      )
+        `Failed to run \`git ${args.join(" ")}\`: ${
+          new TextDecoder().decode(
+            stderr,
+          )
+        }`,
+      );
     }
 
-    return new TextDecoder().decode(stdout)
+    return new TextDecoder().decode(stdout);
   }
 
   /**
@@ -56,8 +58,8 @@ export class GITUtility {
    * console.log(hasChanges); // Outputs true if there are changes, false otherwise.
    */
   async hasUncommittedChanges(): Promise<boolean> {
-    const status = await this.runCommand("status", "--porcelain")
-    return status !== ""
+    const status = await this.runCommand("status", "--porcelain");
+    return status !== "";
   }
 
   /**
@@ -70,6 +72,6 @@ export class GITUtility {
    * // Clones the specified repository into the current working directory.
    */
   async clone(repositoryUrl: string): Promise<void> {
-    await this.runCommand("clone", repositoryUrl)
+    await this.runCommand("clone", repositoryUrl);
   }
 }

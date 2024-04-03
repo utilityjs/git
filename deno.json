@@ -9,7 +9,8 @@
   "exclude": [
     "dist",
     ".run",
-    ".github/"
+    ".github/",
+    "version.json"
   ],
   "publish": {
     "exclude": [
